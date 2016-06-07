@@ -34,6 +34,7 @@
     <module>tephra-hbase-compat-1.0</module>
     <module>tephra-hbase-compat-1.0-cdh</module>
     <module>tephra-hbase-compat-1.1</module>
+    <module>tephra-hbase-compat-1.2-cdh</module>
     <module>tephra-examples</module>
     <module>tephra-distribution</module>
   </modules>
@@ -71,16 +72,41 @@
       <id>continuuity-public</id>
       <url>https://repository.continuuity.com/content/groups/public</url>
     </repository>
+    <repository>
+      <id>cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+    <repository>
+       <id>quadanalytix</id>
+       <name>Quad Analytix Maven Repository</name>
+       <url>https://quadanalytix.artifactoryonline.com/quadanalytix/repo</url>
+       <releases>
+            <enabled>true</enabled>
+       </releases>
+       <snapshots>
+            <enabled>true</enabled>
+       </snapshots>
+    </repository>
   </repositories>
 
   <distributionManagement>
-    <repository>
+    <!--repository>
       <id>sonatype.release</id>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
     </repository>
     <snapshotRepository>
       <id>sonatype.snapshots</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository-->
+    <repository>
+       <id>quadanalytix</id>
+       <name>libs-releases-local</name>
+       <url>https://quadanalytix.artifactoryonline.com/quadanalytix/libs-releases-local</url>
+    </repository>
+    <snapshotRepository>
+       <id>quadanalytix</id>
+       <name>libs-snapshots-local</name>
+       <url>https://quadanalytix.artifactoryonline.com/quadanalytix/libs-snapshots-local</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -100,6 +126,7 @@
     <hbase10.version>1.0.1.1</hbase10.version>
     <hbase10cdh.version>1.0.0-cdh5.4.2</hbase10cdh.version>
     <hbase11.version>1.1.1</hbase11.version>
+    <hbase12cdh.version>1.2.0-cdh5.7.0</hbase12cdh.version>
     <junit.version>4.11</junit.version>
     <slf4j.version>1.7.5</slf4j.version>
     <thrift.version>0.9.0</thrift.version>
@@ -279,7 +306,7 @@
         </plugin>
 
         <!-- License check -->
-        <plugin>
+        <!--plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
           <version>0.10</version>
@@ -307,7 +334,7 @@
               </configuration>
             </execution>
           </executions>
-        </plugin>
+        </plugin-->
 
         <!-- Checkstyle for code style -->
         <plugin>

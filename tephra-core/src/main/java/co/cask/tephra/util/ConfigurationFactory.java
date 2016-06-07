@@ -17,6 +17,7 @@
 package co.cask.tephra.util;
 
 import com.google.inject.Provider;
+
 import org.apache.hadoop.conf.Configuration;
 
 /**
@@ -48,6 +49,11 @@ public class ConfigurationFactory implements Provider<Configuration> {
     @Override
     protected String getHBase10CDHClassname() {
       return "co.cask.tephra.hbase10cdh.HBase10ConfigurationProvider";
+    }
+    
+    @Override
+    protected String getHBase12CDHClassname() {
+      return "co.cask.tephra.hbase12cdh.HBase12ConfigurationProvider";
     }
   }
 

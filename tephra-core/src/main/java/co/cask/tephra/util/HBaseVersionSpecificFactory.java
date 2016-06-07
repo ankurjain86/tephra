@@ -18,6 +18,7 @@ package co.cask.tephra.util;
 
 import com.google.inject.Provider;
 import com.google.inject.ProvisionException;
+
 import org.apache.twill.internal.utils.Instances;
 
 /**
@@ -47,8 +48,10 @@ public abstract class HBaseVersionSpecificFactory<T> implements Provider<T> {
           instance = createInstance(getHBase10CDHClassname());
           break;
         case HBASE_11:
-        case HBASE_12_CDH:
           instance = createInstance(getHBase11Classname());
+          break;
+        case HBASE_12_CDH:
+          instance = createInstance(getHBase12CDHClassname());
           break;
         case UNKNOWN:
           throw new ProvisionException("Unknown HBase version: " + HBaseVersion.getVersionString());
@@ -59,7 +62,9 @@ public abstract class HBaseVersionSpecificFactory<T> implements Provider<T> {
     return instance;
   }
 
-  protected T createInstance(String className) throws ClassNotFoundException {
+  
+
+protected T createInstance(String className) throws ClassNotFoundException {
     Class clz = Class.forName(className);
     return (T) Instances.newInstance(clz);
   }
@@ -69,4 +74,5 @@ public abstract class HBaseVersionSpecificFactory<T> implements Provider<T> {
   protected abstract String getHBase10Classname();
   protected abstract String getHBase10CDHClassname();
   protected abstract String getHBase11Classname();
+  protected abstract String getHBase12CDHClassname();
 }
